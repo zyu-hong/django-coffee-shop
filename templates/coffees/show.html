@@ -1,7 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-<h2>#{{ coffee.id }} {{ coffee.name }}</h2>
+{% if perms.coffees.delete_coffee %}
+    <a href="{% url 'coffees:delete' coffee.id %}"
+       class="btn btn-danger float-right">
+        刪除
+    </a>
+{% endif %}
+{% if perms.coffees.edit_coffee %}
+    <a href="{% url 'coffees:edit' coffee.id %}"
+       class="btn btn-info float-right mr-2">
+        編輯
+    </a>
+{% endif %}<h2>#{{ coffee.id }} {{ coffee.name }}</h2>
 <hr>
 <p>名稱: {{ coffee.name }}</p>
 <p>重量: {{ coffee.weight }}</p>
