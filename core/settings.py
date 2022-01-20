@@ -142,7 +142,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 try:
-    with open(BASE_DIR / 'core/email.txt.txt', 'r') as file:
+    with open(BASE_DIR / 'core/email.txt', 'r') as file:
         email_data = file.readlines()
         email_account, email_password = email_data
 
@@ -150,8 +150,8 @@ try:
 
     EMAIL_HOST_PASSWORD = email_password.strip()
 except FileNotFoundError:
-    print('core/email.txt.txt does not exist.')
+    print('core/email.txt does not exist.')
 except ValueError:
-    print('core/email.txt.txt does not have email.txt account or password.')
+    print('core/email.txt does not have email.txt account or password.')
 except Exception as e:
     print(e)
